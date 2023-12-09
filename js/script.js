@@ -1,3 +1,20 @@
+let token = localStorage.getItem('auth');
+if (token) {
+    fetch('https://ets-pemrograman-web-f.cyclic.app/users/profile', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+        .then(response => response.json())
+        .then(result => console.log('Result: ', result))
+        .catch(error => console.log('Error: ', error));
+}
+else {
+    window.location.href = 'login.html';
+}
+
 const dirt = document.querySelectorAll('.dirt');
 const mole = document.querySelectorAll('.mole');
 const scoreBoard = document.querySelector('.score-board');
